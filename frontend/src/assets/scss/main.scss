@@ -1,0 +1,27 @@
+@import "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,300&display=swap";
+
+@import './variables/colors';
+
+* {
+  font-family: 'Lato', sans-serif !important;
+  color: $white;
+}
+// oraganizar
+body {
+  margin: 0;
+  background-color: $black;
+}
+
+button {
+  color: $yellow !important;
+  font-weight: 700;
+}
+
+.login-area {
+  margin-top: 200px;
+}
+
+a {
+  color: $yellow !important;
+  font-weight: 700;
+}

@@ -1,5 +1,7 @@
 <template>
-  <div id="app">
-    <h1>Home</h1>
-  </div>
+  <v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
