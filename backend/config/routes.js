@@ -2,11 +2,11 @@ const baseApi = '/api';
 
 module.exports = app => {
     app.route(baseApi + '/power')
-        .post(app.api.power.switch)
+        .post(app.api.power.set)
         .get(app.api.power.get)
 
     app.route(baseApi + '/dimmable')
-        .post(app.api.dimmable.dimerize)
+        .post(app.api.dimmable.set)
         .get(app.api.dimmable.get)
 
     app.route(baseApi + '/color')
