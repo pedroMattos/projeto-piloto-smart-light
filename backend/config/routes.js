@@ -1,7 +1,7 @@
 const baseApi = '/api';
 
 module.exports = app => {
-    app.route(baseApi + '/power')
+    app.route(baseApi + '/power/:id')
         .post(app.api.power.set)
         .get(app.api.power.get)
 
