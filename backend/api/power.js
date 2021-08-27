@@ -11,11 +11,13 @@ look.on("detected",(light) => {
 module.exports = app => {
 
     const set = async(req, res) => {
+        
         const id = req.params.id;
         const power = req.body.power;
         const device = devices.find(element => element.id == id);
 
         if(device){
+
             if(device.type == 'sonoff'){
                 axios.post(('http://'+device.ip+':'+device.port+'/zeroconf/switch'), {
                     deviceid: device.id,
@@ -61,6 +63,7 @@ module.exports = app => {
     }
 
     const get = async(req, res) => {
+
         const id = req.params.id;
         const device = devices.find(element => element.id == id);
 
