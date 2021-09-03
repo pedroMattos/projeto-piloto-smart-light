@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,300&display=swap";
 
 @import './variables/colors';
+@import './cards/cena';
 
 * {
   font-family: 'Lato', sans-serif !important;
@@ -15,6 +16,10 @@ body {
 button {
   color: $yellow !important;
   font-weight: 700;
+  &.reverse {
+    color: $black !important;
+    font-weight: 700;
+  }
 }
 
 .login-area {
@@ -24,4 +29,22 @@ button {
 a {
   color: $yellow !important;
   font-weight: 700;
+}
+
+.title-sec {
+  text-align: center;
+  position: relative;
+  max-width: 65px;
+  margin: auto;
+  display: block;
+  svg {
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+  }
+  margin-bottom: 10px;
+}
+
+.sec {
+  margin-bottom: 50px;
 }
