@@ -32,12 +32,14 @@
       </v-col>
     </v-row>
 
-    <v-btn
-      class="reverse"
-      block
-      color="primary"
-      elevation="1"
-    >Solicitar Novo Cômodo</v-btn>
+    <router-link :to="{ name: 'newPiece' }">
+      <v-btn
+        class="reverse"
+        block
+        color="primary"
+        elevation="1"
+      >Solicitar Novo Cômodo</v-btn>
+    </router-link>
   </v-container>
 </template>
 
