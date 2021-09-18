@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     handleCloseEvent() {
-      !this.fixed && (this.show = false) && this.$emit('input', this.text)
+      !this.fixed && (this.show = false)
+      this.$emit('input', this.text)
     }
   },
 }

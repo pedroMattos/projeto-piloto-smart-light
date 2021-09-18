@@ -12,7 +12,8 @@ export default new Vuetify({
     themes: {
       dark: {
         secondary: '#564D42',
-        primary: '#F2AF5C'
+        primary: '#F2AF5C',
+        danger: '#F25E3D'
       }
     }
   },
