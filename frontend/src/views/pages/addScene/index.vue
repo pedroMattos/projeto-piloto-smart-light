@@ -20,6 +20,26 @@
           @input="reAddFunctionText({ evetnData: $event })"
         />
 
+        <p>Selecione a intensidade da luz</p>
+        
+        <v-row>
+          <v-col cols="2">
+            <p class="centralizer">Sala</p>
+            <v-slider
+              v-model="sliderValue[0]"
+              vertical
+            ></v-slider>
+          </v-col>
+          <v-col cols="2">
+          <p class="centralizer">Quarto</p>
+            <v-slider
+              disabled
+              v-model="sliderValue[1]"
+              vertical
+            ></v-slider>
+          </v-col>
+        </v-row>
+
 
       <v-btn class="reverse white-text" color="danger" elevation="1">Limpar</v-btn>
       <router-link :to="{ path: '/' }">
@@ -44,6 +64,7 @@ export default {
       items: ['Sala de estar', 'Quarto'],
       selected: null,
       chipNames: [],
+      sliderValue: [100, 100]
     };
   },
   methods: {
