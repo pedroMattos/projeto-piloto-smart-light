@@ -6,11 +6,18 @@
       <bottom-span></bottom-span>
     </span>
 
-    <v-row class="sec">
-      <v-col v-for="(scene, index) in scenes" :key="index" cols="3">
-        <div @click="snackbar = scene" class="cena-card">{{ scene.name }}</div>
-      </v-col>
-    </v-row>
+    <section class="scroll-wrapper">
+      <v-layout class="sec">
+        <v-flex v-for="(scene, index) in scenes" :key="index" cols="3">
+          <div @click="snackbar = scene" class="cena-card">{{ scene.name }}</div>
+        </v-flex>
+      </v-layout>
+      <!-- <v-row class="sec">
+        <v-col v-for="(scene, index) in scenes" :key="index" cols="3">
+          <div @click="snackbar = scene" class="cena-card">{{ scene.name }}</div>
+        </v-col>
+      </v-row> -->
+    </section>
     <router-link :to="{ name: 'addScene' }">
       <v-btn
         class="reverse"
@@ -96,6 +103,11 @@ export default {
         { name: 'Off', devicesInstructions: [
           { id: 1, dimmer: false, dimmerValue: null, intruction: 'off' },
           { id: 2, dimmer: false, dimmerValue: null, intruction: 'off' },
+          { id: 3, dimmer: false, dimmerValue: null, intruction: 'off' },
+        ], show: true},
+        { name: 'Externo', devicesInstructions: [
+          { id: 1, dimmer: false, dimmerValue: null, intruction: 'off' },
+          { id: 2, dimmer: false, dimmerValue: null, intruction: 'on' },
           { id: 3, dimmer: false, dimmerValue: null, intruction: 'off' },
         ], show: true},
       ],

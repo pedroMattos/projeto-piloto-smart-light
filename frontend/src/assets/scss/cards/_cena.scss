@@ -1,4 +1,11 @@
 .cena-card {
   background-color: white;
   color: black;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  max-height: 74px;
+  min-height: 74px;
 }
