@@ -70,49 +70,6 @@ module.exports = app => {
         }
     }
 
-    const get = async(req, res) => {
-        const id = req.params.id;
-        const device = devices.find(element => element.id == id);
-
-        if(device){
-
-            if(device.type == 'sonoff'){
-                if(device.actuator == 'dimmer'){
-                    //Adicionar funções de aquisição de dimerização após teste com D1
-                    res.sendStatus(204);
-                }
-                else{
-                    console.log('failed dimmer');
-                    res.sendStatus(406);
-                }
-            }
-
-            else if(device.type == 'yeelight'){
-                const yeelight = yeelights.find(element => element.id == parseInt(id));
-                if(yeelight){
-                    if(!yeelight.power){
-                        res.status(200).send({
-                            bright: 0
-                        });
-                    }
-                    else{
-                        res.status(200).send({
-                            bright: yeelight.bright
-                        })
-                    }
-                }
-                else{
-                    console.log('not found');
-                    res.sendStatus(404);
-                }
-            }
-        }
-        else{
-            console.log('device not found');
-            res.sendStatus(404);
-        }
-    }
-
-    return { set, get }
+    return { set }
 
 }

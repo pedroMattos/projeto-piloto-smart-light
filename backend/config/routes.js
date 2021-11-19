@@ -1,15 +1,15 @@
 const baseApi = '/api';
 
 module.exports = app => {
-    app.route(baseApi + '/power/:id')
+    app.route(baseApi + '/power')
         .post(app.api.power.set)
-        .get(app.api.power.get)
 
-    app.route(baseApi + '/dimmable/:id')
+    app.route(baseApi + '/dimmable')
         .post(app.api.dimmable.set)
-        .get(app.api.dimmable.get)
 
-    app.route(baseApi + '/color/:id')
+    app.route(baseApi + '/device')
+        .post(app.api.device.status)
+
+    app.route(baseApi + '/color')
         .post(app.api.color.set)
-        .get(app.api.color.get)
 }

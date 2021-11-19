@@ -16,13 +16,13 @@ module.exports = app => {
         const device = devices.find(element => element.id == id);
 
         if(device){
-            if(device.type == 'sonoff'){
-                console.log('failed color');
-                res.sendStatus(406);
-            }
-            else if(device.type == 'yeelight'){
+            if(device.type == 'yeelight'){
                 //Adicionar funções de mudança de cor
                 res.sendStatus(204);
+            }
+            else{
+                console.log('failed color');
+                res.sendStatus(406);
             }
         }
     }
@@ -33,13 +33,13 @@ module.exports = app => {
         const device = devices.find(element => element.id == id);
 
         if(device){
-            if(device.type == 'sonoff'){
-                console.log('failed color');
-                res.sendStatus(406);
-            }
-            else if(device.type == 'yeelight'){
+            if(device.type == 'yeelight'){
                 //Adicionar funções de consulta de cor
                 res.sendStatus(200);
+            }
+            else{
+                console.log('failed color');
+                res.sendStatus(406);
             }
         }
     }

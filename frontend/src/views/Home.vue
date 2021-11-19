@@ -91,24 +91,24 @@ export default {
       ],
       scenes: [
         { name: 'Cinema', devicesInstructions: [
-          { id: 1, dimmer: true, dimmerValue: 40, intruction: 'on' },
-          { id: 2, dimmer: false, dimmerValue: null, intruction: 'off' },
-          { id: 3, dimmer: false, dimmerValue: null, intruction: 'off' },
+          { id: 1, dimmer: true, dimmerValue: 40, instruction: 'on' },
+          { id: 2, dimmer: false, dimmerValue: null, instruction: 'off' },
+          { id: 3, dimmer: false, dimmerValue: null, instruction: 'off' },
         ], show: true},
         { name: 'Dormir', devicesInstructions: [
-          { id: 1, dimmer: false, dimmerValue: null, intruction: 'off' },
-          { id: 2, dimmer: false, dimmerValue: null, intruction: 'off' },
-          { id: 3, dimmer: true, dimmerValue: 20, intruction: 'on' },
+          { id: 1, dimmer: false, dimmerValue: null, instruction: 'off' },
+          { id: 2, dimmer: false, dimmerValue: null, instruction: 'off' },
+          { id: 3, dimmer: true, dimmerValue: 20, instruction: 'on' },
         ], show: true},
         { name: 'Off', devicesInstructions: [
-          { id: 1, dimmer: false, dimmerValue: null, intruction: 'off' },
-          { id: 2, dimmer: false, dimmerValue: null, intruction: 'off' },
-          { id: 3, dimmer: false, dimmerValue: null, intruction: 'off' },
+          { id: 1, dimmer: false, dimmerValue: null, instruction: 'off' },
+          { id: 2, dimmer: false, dimmerValue: null, instruction: 'off' },
+          { id: 3, dimmer: false, dimmerValue: null, instruction: 'off' },
         ], show: true},
         { name: 'Externo', devicesInstructions: [
-          { id: 1, dimmer: false, dimmerValue: null, intruction: 'off' },
-          { id: 2, dimmer: false, dimmerValue: null, intruction: 'on' },
-          { id: 3, dimmer: false, dimmerValue: null, intruction: 'off' },
+          { id: 1, dimmer: false, dimmerValue: null, instruction: 'off' },
+          { id: 2, dimmer: false, dimmerValue: null, instruction: 'on' },
+          { id: 3, dimmer: false, dimmerValue: null, instruction: 'off' },
         ], show: true},
       ],
       snackbar: { show: false }

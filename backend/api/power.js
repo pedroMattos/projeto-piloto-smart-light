@@ -11,18 +11,18 @@ look.on("detected",(light) => {
 module.exports = app => {
 
     const set = async(req, res) => {
-        
-        const id = req.params.id;
-        const power = req.body.power;
+
+        const id = req.body.id;
+        const power = req.body.instruction;
         const device = devices.find(element => element.id == id);
+        console.log(req.body);
 
         if(device){
-
             if(device.type == 'sonoff'){
                 axios.post(('http://'+device.ip+':'+device.port+'/zeroconf/switch'), {
                     deviceid: device.id,
                     data: {
-                        switch: (power) ? "on" : "off"
+                        switch: power
                     }
                 }).then((response) => {
                     if(response.data.error == 0){
@@ -34,15 +34,14 @@ module.exports = app => {
                         res.sendStatus(400);
                     }
                 }, (error) => {
-                    console.log('failed axios', error);
+                    console.log('failed axios');
                     res.sendStatus(404);
                 })
             }
-
             else if(device.type == 'yeelight'){
                 const yeelight = yeelights.find(element => element.id == parseInt(id));
                 if(yeelight){
-                    yeelight.setPower(power).then(() => {
+                    yeelight.setPower(power == 'on').then(() => {
                         console.log('success');
                         res.sendStatus(204);
                     }).catch((error => {
@@ -62,52 +61,54 @@ module.exports = app => {
         }
     }
 
-    const get = async(req, res) => {
+    // const get = async(req, res) => {
 
-        const id = req.params.id;
-        const device = devices.find(element => element.id == id);
+    //     const id = req.params.id;
+    //     const device = devices.find(element => element.id == id);
 
-        if(device){
-            if(device.type == 'sonoff'){
-                axios.post(('http://'+device.ip+':'+device.port+'/zeroconf/info'), {
-                    deviceid: device.id,
-                    data: {}
-                }).then((response) => {
-                    if(response.data.error == 0){
-                        console.log('success');
-                        res.status(200).send({
-                            status: (JSON.parse(response.data.data).switch == 'on')
-                        });
-                    }
-                    else{
-                        console.log('failed sonoff', response.data.error);
-                        res.sendStatus(400);
-                    }
-                }, (error) => {
-                    console.log('failed axios', error);
-                    res.sendStatus(404);
-                })
-            }
+    //     if(device){
+    //         if(device.type == 'sonoff'){
+    //             axios.post(('http://'+device.ip+':'+device.port+'/zeroconf/info'), {
+    //                 deviceid: device.id,
+    //                 data: {}
+    //             }).then((response) => {
+    //                 if(response.data.error == 0){
+    //                     console.log('success');
+    //                     res.status(200).send({
+    //                         id: id,
+    //                         status: (JSON.parse(response.data.data).switch == 'on')
+    //                     });
+    //                 }
+    //                 else{
+    //                     console.log('failed sonoff', response.data.error);
+    //                     res.sendStatus(400);
+    //                 }
+    //             }, (error) => {
+    //                 console.log('failed axios', error);
+    //                 res.sendStatus(404);
+    //             })
+    //         }
 
-            else if(device.type == 'yeelight'){
-                const yeelight = yeelights.find(element => element.id == parseInt(id));
-                if(yeelight){
-                    res.status(200).send({
-                        status: yeelight.power
-                    });
-                }
-                else{
-                    console.log('not found');
-                    res.sendStatus(404);
-                }
-            }
-        }
-        else{
-            console.log('device not found');
-            res.sendStatus(404);
-        }
-    }
+    //         else if(device.type == 'yeelight'){
+    //             const yeelight = yeelights.find(element => element.id == parseInt(id));
+    //             if(yeelight){
+    //                 res.status(200).send({
+    //                     id: id,
+    //                     status: yeelight.power
+    //                 });
+    //             }
+    //             else{
+    //                 console.log('not found');
+    //                 res.sendStatus(404);
+    //             }
+    //         }
+    //     }
+    //     else{
+    //         console.log('device not found');
+    //         res.sendStatus(404);
+    //     }
+    // }
 
-    return { set, get }
+    return { set }
 
 }
