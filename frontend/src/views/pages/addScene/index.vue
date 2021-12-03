@@ -12,7 +12,7 @@
         <p>Escolher cômodos</p>
         <v-select :items="items" @input="addChip" v-model="selected" label="Cômodos"></v-select>
 
-        <p>Funções selecionadas</p>
+        <p>Cômodos selecionados</p>
         <chips
           v-for="(name, index) in chipNames"
           :key="index"
@@ -22,23 +22,22 @@
 
         <p>Selecione a intensidade da luz</p>
         
-        <v-row>
-          <v-col cols="2">
-            <p class="centralizer">Sala</p>
+        <!-- TODO o step é para caso não seja dimerizável, 100 ligado, 0 desligado -->
+        <v-layout
+          justify-center
+          row
+        >
+        <div :class="chipNames.lenght > 2 ? 'scroll-wrapper' : ''">
+          <v-flex xs4 v-for="(chipName, index) in chipNames" :key="index">
+            <p class="centralizer">{{ chipName }}</p>
             <v-slider
-              v-model="sliderValue[0]"
+              v-model="sliderValue[index]"
               vertical
+              step="100"
             ></v-slider>
-          </v-col>
-          <v-col cols="2">
-          <p class="centralizer">Quarto</p>
-            <v-slider
-              disabled
-              v-model="sliderValue[1]"
-              vertical
-            ></v-slider>
-          </v-col>
-        </v-row>
+          </v-flex>
+        </div>
+        </v-layout>
 
 
       <v-btn class="reverse white-text" color="danger" elevation="1">Limpar</v-btn>
@@ -61,21 +60,22 @@ export default {
   },
   data() {
     return {
-      items: ['Sala de estar', 'Quarto'],
+      items: ['Sala de estar', 'Quarto', 'Quintal', 'Corredor'],
       selected: null,
       chipNames: [],
-      sliderValue: [100, 100]
+      sliderValue: [100, 100, 100, 100]
     };
   },
   methods: {
     addChip() {
       this.chipNames.push(this.selected);
       this.items = this.items.filter((e) => e != this.selected);
-      this.$forceUpdate();
     },
+    // TODO fazer essas funções do chips dentro dos chips
     reAddFunctionText({ evetnData }) {
       this.items.push(evetnData);
       this.selected = null;
+      this.chipNames = this.chipNames.filter((e) => e != evetnData)
     },
   },
   
